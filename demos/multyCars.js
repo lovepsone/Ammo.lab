@@ -1,17 +1,11 @@
 function demo () {
 
-    cam ({ azim:0, polar:10, distance:30 });
+    cam ( 0, 20, 100 );
     load ( 'cars', afterLoad );
 
 }
 
 function afterLoad () {
-
-    set({
-        fps:60,
-        numStep:8,
-        gravity:[0,-10,0],
-    })
 
     // infinie plane
     add({type:'plane'});
@@ -27,7 +21,7 @@ function afterLoad () {
     // ! \\ set the car we drive 0 to 13
     // use keyboard to controle car 
 
-    follow ('car_0', 180);
+    follow ('car_0');
     drive ('car_0');
 
 };

@@ -1,13 +1,12 @@
 function demo() {
 
-    cam ({ azim:0, polar:20, distance:100 });
-
-    set ({});
+    cam ( 90, 20, 100 );
 
     view.hideGrid();
+    view.hideGroundShadow();
 
     // static box
-    add({ type:'box', size:[10,10,10], pos:[0,-5,0], rot:[0,0,0], density:0 });
+    add({ type:'box', size:[10,10,10], pos:[0,-5,0], rot:[0,0,0], mass:0 });
 
     add({ 
         type:'cloth', name:'cloth', 
@@ -23,26 +22,12 @@ function demo() {
     });
 
 
-    add({ type:'sphere', size:[3], pos:[-20, 100, 0], density:1});
-    add({ type:'sphere', size:[3], pos:[20, 200, 0], density:1});
-    add({ type:'sphere', size:[3], pos:[0, 300, -20], density:1});
-    add({ type:'sphere', size:[3], pos:[0, 400, 20], density:1});
+    add({ type:'sphere', size:[3], pos:[-20, 100, 0], mass:1});
+    add({ type:'sphere', size:[3], pos:[20, 200, 0], mass:1});
+    add({ type:'sphere', size:[3], pos:[0, 300, -20], mass:1});
+    add({ type:'sphere', size:[3], pos:[0, 400, 20], mass:1});
 
     //anchor({soft:'cloth', body:'ground', pos:0});
     //anchor({soft:'cloth', body:'ground', pos:100});
-
-    view.update = update;
-
-}
-
-function update () {
-
-    view.bodys.forEach( function ( b, id ) {
-
-        if( b.position.y < -20 ){
-            matrix( [ b.name, [ Math.rand(-20,20), 100, Math.rand(-20,20)] ] );
-        }
-
-    });
 
 }

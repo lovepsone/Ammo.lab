@@ -2,7 +2,7 @@ function demo() {
 
     substep( 1 )
 
-    cam ({ azim:0, polar:20, distance:40 });
+    cam ( 90, 20, 40 );
     load ( 'avatar_low', afterLoad )
     view.addMap('avatar.jpg', 'avatar');
 

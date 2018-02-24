@@ -1,10 +1,9 @@
 function demo() {
 
-    set({
-        fps:60,
-        numStep:8,// more numStep = more accurate simulation default set to 2
-        gravity:[0,-10,0],
-    })
+    // more substep more accurate simulation default set to 7
+    //substep( 7 );
+
+    cam ( 0, 10, 40 );
 
     load ( 'track', afterLoad );
 
@@ -12,9 +11,7 @@ function demo() {
 
 function afterLoad () {
 
-    
-
-    add({ type:'plane', friction:0.6, restitution:0.1 }); // infinie plane
+    add({type:'plane', friction:0.6, restitution:0.1 }); // infinie plane
 
     add({ type:'mesh', shape:view.getGeo()['track'], mass:0, friction:0.6, restitution:0.1 });
 
@@ -23,7 +20,6 @@ function afterLoad () {
     // ! \\ go on view and use keyboard to controle car
 
     car ({ 
-
         type:'box',
         name:'car',
         helper: true,

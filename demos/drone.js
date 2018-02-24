@@ -1,18 +1,15 @@
-var debug = false;
-var drone = null, rotor = [], rpos = [];
-var force;
-
-var tmpMatrix, tmpPos;
-
 function demo() {
 
-    cam ([ 0, 20, 30 ]);
-    set();
-
+    cam ( 0, 20, 30 );
     load ( 'drone', afterLoadGeometry );
 
 };
 
+var debug = false;
+var drone, rotor = [], rpos = [];
+var force;
+
+var tmpMatrix, tmpPos;
 
 function afterLoadGeometry () {
 
@@ -39,7 +36,6 @@ function afterLoadGeometry () {
         state:4,
 
     });
-
 
     var sx=1, sz=1;
 
@@ -74,20 +70,20 @@ function afterLoadGeometry () {
     tmpMatrix = new THREE.Matrix4();
 
 
-    follow ('drone');
+    //follow ('drone');
 
 
-    view.update = update;
+    postUpdate = postUp;
 
 }
 
-function update() {
+function postUp() {
 
     tmpMatrix.extractRotation( drone.matrix );
     tmpPos.set( 0, 1, 0 );
     tmpPos.applyMatrix4( tmpMatrix );
 
-    force.y = 24.52;//0.435;
+    force.y = 25.;//0.435;
     //var p = drone.position.clone();//.negate().normalize().multiplyScalar(9.8);
     var r = [];
     var p;
@@ -101,6 +97,7 @@ function update() {
 
      //r.push( [ 'drone', 'centralForce', force.toArray() ] )
 
-    forceArray( r );
 
+
+    ammo.send( 'forces', { r:r } );
 }

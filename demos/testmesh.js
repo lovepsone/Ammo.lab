@@ -1,6 +1,6 @@
 function demo() {
 
-    cam ({ azim:-90, polar:20, distance:180 });
+    cam ( -90, 20, 180 );
     load ( 'bol', afterLoad );
 
 }

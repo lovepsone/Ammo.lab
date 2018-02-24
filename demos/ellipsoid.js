@@ -1,10 +1,12 @@
 function demo() {
 
-    cam ({ azim:120, polar:30, distance:40 });
+    cam ( 90, 20, 40 );
 
     add({type:'plane' }); // infinie plane
     add({ type:'box', size:[40,10,1], pos:[0,4.6,0], rot:[45,0,0], mass:0 });
     add({ type:'box', size:[40,2,40], pos:[0,1,-10], rot:[0,0,0], mass:0 });
+
+    
 
     add({ 
         type:'ellipsoid',
